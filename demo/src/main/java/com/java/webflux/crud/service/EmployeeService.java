@@ -1,11 +1,12 @@
 package com.java.webflux.crud.service;
 
 import com.java.webflux.crud.dal.model.Employee;
+import com.java.webflux.crud.service.model.EmployeeModel;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface EmployeeService {
-    Mono<Employee> saveEmployee(Employee employee);
+    Mono<Employee> saveEmployee(EmployeeModel employeeModel);
 
     Mono<Employee> getEmployeeById(String employeeId);
 
@@ -13,5 +14,5 @@ public interface EmployeeService {
 
     Mono<Void> deleteEmployeeById(String employeeId);
 
-    Mono<Employee> updateEmployee(String employeeId, Employee employee);
+    Mono<Employee> updateEmployee(String employeeId, EmployeeModel employeeModel);
 }

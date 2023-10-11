@@ -4,6 +4,8 @@ import com.java.webflux.crud.dal.model.Employee;
 import com.java.webflux.crud.dal.repository.EmployeeRepository;
 import com.java.webflux.crud.service.EmployeeService;
 import com.java.webflux.crud.service.exception.NotFoundException;
+import com.java.webflux.crud.service.mapper.EmployeeServiceMapper;
+import com.java.webflux.crud.service.model.EmployeeModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -14,10 +16,15 @@ import reactor.core.publisher.Mono;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository repository;
+    private final EmployeeServiceMapper mapper;
 
     @Override
-    public Mono<Employee> saveEmployee(Employee employee) {
-        return repository.save(employee);
+    public Mono<Employee> saveEmployee(EmployeeModel employeeModel) {
+        return repository.save(
+                mapper.getEntityFromEmployeeModel(
+                        employeeModel
+                )
+        );
     }
 
     @Override
@@ -35,13 +42,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Mono<Employee> updateEmployee(String employeeId, Employee employee) {
+    public Mono<Employee> updateEmployee(String employeeId, EmployeeModel employeeModel) {
         Mono<Employee> employeeMono = repository.findById(employeeId);
         return employeeMono.flatMap(
                 (existingEmployee) -> {
-                    existingEmployee.setFirstName(employee.getFirstName());
-                    existingEmployee.setLastName(employee.getLastName());
-                    existingEmployee.setEmail(employee.getEmail());
+                    existingEmployee.setFirstName(employeeModel.getFirstName());
+                    existingEmployee.setLastName(employeeModel.getLastName());
+                    existingEmployee.setEmail(employeeModel.getEmail());
                     return repository.save(existingEmployee);
                 }
         );
