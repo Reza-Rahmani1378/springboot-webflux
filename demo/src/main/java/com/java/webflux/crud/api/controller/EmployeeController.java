@@ -40,6 +40,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteEmployeeById(@PathVariable("id") String id) {
         return facade.deleteEmployeeById(id);
     }

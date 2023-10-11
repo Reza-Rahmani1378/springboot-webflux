@@ -17,4 +17,6 @@ class SpringbootWebfluxDemoApplicationTests {
 		monoString.subscribe(System.out::println);
 	}
 
+
+
 }
