@@ -4,14 +4,13 @@ import com.java.webflux.crud.dal.model.Employee;
 import com.java.webflux.crud.dal.repository.EmployeeRepository;
 import com.java.webflux.crud.service.EmployeeService;
 import com.java.webflux.crud.service.exception.NotFoundException;
-import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository repository;
