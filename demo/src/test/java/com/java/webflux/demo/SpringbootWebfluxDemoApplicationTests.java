@@ -1,18 +1,15 @@
 package com.java.webflux.demo;
 
-import com.java.webflux.crud.api.controller.EmployeeController;
+
 import com.java.webflux.crud.api.dto.EmployeeInputModel;
 import com.java.webflux.crud.api.dto.EmployeeOutputModel;
-import com.java.webflux.crud.api.facade.EmployeeFacade;
 import com.java.webflux.crud.dal.model.Employee;
 import com.java.webflux.crud.dal.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
@@ -20,26 +17,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/*@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-properties = "spring.main.web-application-type=reactive")*/
-@WebFluxTest(EmployeeController.class)
-//@ContextConfiguration(classes = {EmployeeFacade.class,EmployeeRepository.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
+        properties = "spring.main.web-application-type=reactive")
 public class SpringbootWebfluxDemoApplicationTests {
 
 
     @Autowired
-    private EmployeeFacade facade;
+    private EmployeeRepository repository;
 
     @Autowired
-    private  EmployeeRepository repository;
+    private WebTestClient webTestClient;
 
-    @Autowired
-    private  WebTestClient webTestClient;
-
-
-    @Test
-    void contextLoads() {
-        facade.getEmployees().subscribe(System.out::println);
+    @BeforeEach
+    public void before() {
+        System.out.println("before each test");
+        repository.deleteAll();
     }
 
     @Test
@@ -48,22 +40,16 @@ public class SpringbootWebfluxDemoApplicationTests {
         monoString.subscribe(System.out::println);
     }
 
-    @BeforeEach
-    public void before() {
-        System.out.println("before each test");
-        repository.deleteAll().subscribe();
-    }
-
     @Test
     public void testSaveEmployee() {
         EmployeeInputModel employeeInputModel = new EmployeeInputModel();
         employeeInputModel.setFirstName("John");
         employeeInputModel.setLastName("Doe");
         employeeInputModel.setEmail("<EMAIL>");
-        webTestClient.post().uri("/api/v1/employees")
+        webTestClient.post().uri( "/api/v1/employees")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .body(Mono.just(employeeInputModel), EmployeeOutputModel.class)
+                .body(Mono.just(employeeInputModel), EmployeeInputModel.class)
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody()
