@@ -28,6 +28,12 @@ public class CustomerDao {
                 .map(i -> new Customer(i , "Customer" + i));
     }
 
+    public Flux<Customer> getCustomerList() {
+        return Flux.range(1, 50)
+                .doOnNext(i -> System.out.println("Processing Count" + i))
+                .map(i -> new Customer(i , "Customer" + i));
+    }
+
     private static void sleepExecution(int i) {
         try {
             Thread.sleep(1000 + i);
