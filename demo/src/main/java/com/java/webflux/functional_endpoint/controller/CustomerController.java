@@ -1,7 +1,7 @@
-package com.java.webflux.crud_without_database.controller;
+package com.java.webflux.functional_endpoint.controller;
 
-import com.java.webflux.crud_without_database.dto.Customer;
-import com.java.webflux.crud_without_database.service.CustomerService;
+import com.java.webflux.functional_endpoint.dto.Customer;
+import com.java.webflux.functional_endpoint.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

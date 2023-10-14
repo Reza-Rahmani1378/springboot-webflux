@@ -1,9 +1,8 @@
-package com.java.webflux.crud_without_database.handler;
+package com.java.webflux.functional_endpoint.handler;
 
-import com.java.webflux.crud_without_database.dao.CustomerDao;
-import com.java.webflux.crud_without_database.dto.Customer;
-import com.mongodb.internal.connection.Server;
-import lombok.RequiredArgsConstructor;
+import com.java.webflux.functional_endpoint.dao.CustomerDao;
+import com.java.webflux.functional_endpoint.dto.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -12,10 +11,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerHandler {
 
-    private final CustomerDao dao;
+    @Autowired
+    private  CustomerDao dao;
 
 
     public Mono<ServerResponse> loadCustomers(ServerRequest request) {

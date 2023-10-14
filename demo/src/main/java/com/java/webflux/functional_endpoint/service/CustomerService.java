@@ -1,9 +1,8 @@
-package com.java.webflux.crud_without_database.service;
+package com.java.webflux.functional_endpoint.service;
 
-import com.java.webflux.crud_without_database.dao.CustomerDao;
-import com.java.webflux.crud_without_database.dto.Customer;
+import com.java.webflux.functional_endpoint.dao.CustomerDao;
+import com.java.webflux.functional_endpoint.dto.Customer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 

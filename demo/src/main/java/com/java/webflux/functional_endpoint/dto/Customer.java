@@ -1,4 +1,4 @@
-package com.java.webflux.crud_without_database.dto;
+package com.java.webflux.functional_endpoint.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

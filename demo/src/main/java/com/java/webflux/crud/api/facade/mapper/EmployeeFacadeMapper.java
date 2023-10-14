@@ -6,7 +6,7 @@ import com.java.webflux.crud.dal.model.Employee;
 import com.java.webflux.crud.service.model.EmployeeModel;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface EmployeeFacadeMapper {
 
     EmployeeOutputModel getModelFromEntity(Employee employee);

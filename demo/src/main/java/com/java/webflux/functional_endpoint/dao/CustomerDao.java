@@ -1,6 +1,6 @@
-package com.java.webflux.crud_without_database.dao;
+package com.java.webflux.functional_endpoint.dao;
 
-import com.java.webflux.crud_without_database.dto.Customer;
+import com.java.webflux.functional_endpoint.dto.Customer;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 

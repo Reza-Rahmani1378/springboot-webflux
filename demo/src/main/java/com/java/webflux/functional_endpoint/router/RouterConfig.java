@@ -1,7 +1,9 @@
-package com.java.webflux.crud_without_database.router;
+package com.java.webflux.functional_endpoint.router;
 
-import com.java.webflux.crud_without_database.handler.CustomerHandler;
-import com.java.webflux.crud_without_database.handler.CustomerStreamHandler;
+import com.java.webflux.functional_endpoint.handler.CustomerHandler;
+import com.java.webflux.functional_endpoint.handler.CustomerStreamHandler;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

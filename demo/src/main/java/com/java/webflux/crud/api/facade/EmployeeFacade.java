@@ -5,6 +5,8 @@ import com.java.webflux.crud.api.dto.EmployeeOutputModel;
 import com.java.webflux.crud.api.facade.mapper.EmployeeFacadeMapper;
 import com.java.webflux.crud.service.EmployeeService;
 import com.java.webflux.crud.service.exception.NotFoundException;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -14,7 +16,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class EmployeeFacade {
 
-    private final EmployeeService service;
+    private final  EmployeeService service;
     private final EmployeeFacadeMapper mapper;
 
 
