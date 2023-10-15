@@ -85,7 +85,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<mainClass>com.java.webflux.demo.SpringbootWebfluxDemoApplication</mainClass>
+							<mainClass>com.java.webflux.SpringbootWebfluxDemoApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
